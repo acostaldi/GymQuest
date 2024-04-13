@@ -22,6 +22,9 @@
             android:name=".View.CreatePlayer"
             android:exported="false"/>
         <activity
+            android:name=".View.DietActivity"
+            android:exported="false"/>
+        <activity
             android:name=".View.ClaudeAPI"
             android:exported="false"/>
         <activity
