@@ -40,9 +40,9 @@ class LoginActivity : AppCompatActivity() {
         val login = findViewById<Button>(R.id.loginButton)
         val firebaseRepository = FirebaseRepository()
         login.setOnClickListener {
-//            val intent = Intent(this, CreatePlayer::class.java)
-//            startActivity(intent)
-            signInWithGoogle()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+//            signInWithGoogle()
         }
 
         val claude = findViewById<Button>(R.id.button3)

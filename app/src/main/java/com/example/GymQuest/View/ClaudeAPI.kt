@@ -43,6 +43,8 @@ class ClaudeAPI : AppCompatActivity(){
 
             // Call a function from the script (replace "function_name" with your function's name)
             val result = pythonScript.callAttr("query_API", ApiKeys.API_KEY, aiPrompt)
+            //val result = pythonScript.callAttr("query_story_API", ApiKeys.API_KEY)
+            //val result = pythonScript.callAttr("query_fitness_API", ApiKeys.API_KEY)
 
             // Use the result (this assumes the function returns a string)
             callback(result.toString())
