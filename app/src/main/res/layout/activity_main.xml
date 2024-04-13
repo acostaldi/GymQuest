@@ -40,7 +40,7 @@
     </ScrollView>
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/editHealth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -58,10 +58,10 @@
         android:inputType="text"
         android:text="Strength"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText" />
+        app:layout_constraintTop_toBottomOf="@+id/editHealth" />
 
     <EditText
-        android:id="@+id/editHealth"
+        android:id="@+id/editDex"
         android:layout_width="121dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -71,13 +71,12 @@
         app:layout_constraintTop_toBottomOf="@+id/editStrength" />
 
     <EditText
-        android:id="@+id/editTextText4"
+        android:id="@+id/editStamina"
         android:layout_width="121dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="text"
         android:text="Stamina"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editHealth" />
-
+        app:layout_constraintTop_toBottomOf="@+id/editDex" />
 </androidx.constraintlayout.widget.ConstraintLayout>

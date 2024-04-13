@@ -8,5 +8,8 @@ buildscript {
 plugins {
     alias(libs.plugins.androidApplication) apply false
     alias(libs.plugins.jetbrainsKotlinAndroid) apply false
+
+    // Add the dependency for the Google services (for Auth)
+    id("com.google.gms.google-services") version "4.4.1" apply false
     id("com.chaquo.python") version "15.0.1" apply false
 }

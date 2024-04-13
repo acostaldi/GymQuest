@@ -34,6 +34,20 @@ class FirebaseRepository {
             }
     }
 
+    fun getPlayer(name: String, onSuccess: (List<Player>) -> Unit, onFailure: (Exception) -> Unit) {
+        playerCollection.get()
+            .addOnSuccessListener { querySnapshot ->
+                val quests = mutableListOf<Player>()
+                for (document in querySnapshot) {
+                    val player = document.toObject(Player::class.java)
+                    quests.add(player)
+                }
+                onSuccess(quests)
+            }
+            .addOnFailureListener { e ->
+                onFailure(e)
+            }
+    }
     fun addQuest (questName: String, questDesc: String, isComplete: Boolean) {
         val questDocRef = questCollection.document(questName)
 

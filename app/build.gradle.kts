@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     kotlin("plugin.serialization") version "1.9.23"
+
+    // Add the Google services (for Auth)
     id("com.google.gms.google-services")
     id("com.chaquo.python")
 }
@@ -92,13 +94,8 @@ dependencies {
     // Google Play Store Integration for Authentication //
     //
 
-//    // Import the BoM for the Firebase platform
-//    implementation(platform("com.google.firebase:firebase-bom:32.8.1"))
-//
-//    // Add the dependency for the Firebase Authentication library
-//    // When using the BoM, you don't specify versions in Firebase library dependencies
-//    implementation("com.google.firebase:firebase-auth")
-//
-//    // Also add the dependency for the Google Play services library and specify its version
-//    implementation("com.google.android.gms:play-services-auth:21.0.0")
+    // Import the BoM for the Firebase platform
+    implementation(platform("com.google.firebase:firebase-bom:32.8.1"))
+
+    implementation("com.firebaseui:firebase-ui-auth:7.2.0")
 }
