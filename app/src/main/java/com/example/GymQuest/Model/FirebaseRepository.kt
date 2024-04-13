@@ -7,7 +7,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 class FirebaseRepository {
 
     private val db = FirebaseFirestore.getInstance()
-    private val patientsCollection = db.collection("users")
+    private val playerCollection = db.collection("users")
 
     fun addPlayer( name: String, strength: Int, dexterity: Int, stamina: Int, health: Int) {
         val playerDocRef = patientsCollection.document(name)
