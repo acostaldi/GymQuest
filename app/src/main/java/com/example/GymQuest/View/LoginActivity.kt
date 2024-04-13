@@ -52,7 +52,7 @@ class LoginActivity : AppCompatActivity() {
             .requestEmail()
             .build()
 
-        //googleSignInClient = GoogleSignIn.getClient(this, gso)
+        googleSignInClient = GoogleSignIn.getClient(this, gso)
     }
 
     private fun signInWithGoogle() {
@@ -60,17 +60,6 @@ class LoginActivity : AppCompatActivity() {
         signInLauncher.launch(signInIntent)
     }
 
-
-
-//    signInRequest = BeginSignInRequest.builder()
-//        .setGoogleIdTokenRequestOptions(
-//            BeginSignInRequest.GoogleIdTokenRequestOptions.builder.setSupported(true)
-//            // Your server's client ID, not your Android client ID.
-//            .setServerClientId(getString(R.string.your_web_client_id)
-//    )
-//    // Only show accounts previously used to sign in.
-//    .setFilterByAuthorizedAccounts(true)
-//    .build())
 
     private fun handleSignInResult(data: Intent?) {
         val task = GoogleSignIn.getSignedInAccountFromIntent(data)
