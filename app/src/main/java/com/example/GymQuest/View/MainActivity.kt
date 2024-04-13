@@ -44,9 +44,8 @@ class MainActivity : AppCompatActivity() {
 
         fetchQuests()
 
-//        val playerField = findViewById<EditText>(R.id.usernameField)
-//        val playerName = playerField.text.toString()
-        fetchPlayerStats("Temporary_Player_Name")
+        val emailName = intent.getStringExtra("email")
+        fetchPlayerStats(emailName ?: "default")
     }
 
     private fun fetchPlayerStats(playerName : String) {

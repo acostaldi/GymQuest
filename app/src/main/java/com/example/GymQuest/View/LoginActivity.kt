@@ -26,7 +26,7 @@ class LoginActivity : AppCompatActivity() {
     private val db = FirebaseFirestore.getInstance()
 
 
-    private val signInLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+    private var signInLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == RESULT_OK) {
             val data: Intent? = result.data
             handleSignInResult(data)
@@ -42,8 +42,6 @@ class LoginActivity : AppCompatActivity() {
         val login = findViewById<Button>(R.id.loginButton)
         firebaseRepository = FirebaseRepository()
         login.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
             signInWithGoogle()
         }
 
@@ -60,6 +58,13 @@ class LoginActivity : AppCompatActivity() {
             .build()
 
         googleSignInClient = GoogleSignIn.getClient(this, gso)
+
+        signInLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == RESULT_OK) {
+                val data: Intent? = result.data
+                handleSignInResult(data)
+            }
+        }
     }
 
     private fun signInWithGoogle() {
@@ -86,8 +91,33 @@ class LoginActivity : AppCompatActivity() {
             val account = task.getResult(ApiException::class.java)!!
             firebaseAuthWithGoogle(account.idToken!!) { success, userId ->
                 if (success) {
-                    // TODO: Make check so that if user already exists, they are taken to MainActivity
-                    val intent = Intent(this, CreatePlayer::class.java)
+                    val userDocRef = db.collection("users").document(userId!!)
+                    userDocRef.get()
+                        .addOnSuccessListener { document ->
+                            if (document.exists()) {
+                                val intent = Intent(this, MainActivity::class.java)
+                                intent.putExtra("email", account.email)
+                                this@LoginActivity.startActivity(intent)
+                                finish()
+                            }
+                        }
+                        .addOnFailureListener { exception ->
+                            println("Error getting user document: $exception")
+                        }
+
+                    // Saves the email as the username
+                    val userData = hashMapOf(
+                        "email" to account.email, // Save the email into the name field
+                    )
+
+                    userDocRef.set(userData)
+                        .addOnSuccessListener {
+                            println("User document created/updated in Firestore for user: $userId")
+                        }
+                        .addOnFailureListener { e ->
+                            println("Error creating/updating user document in Firestore: $e")
+                        }
+                    val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                     finish()
                 } else {
