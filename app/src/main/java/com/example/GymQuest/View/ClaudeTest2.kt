@@ -11,7 +11,7 @@ class ClaudeTest2 : AppCompatActivity(){
         setContentView(R.layout.activity_chat)
 
         // Create instance of ClaudeTest2
-        val claudeTest2 = ClaudeTest3()
+        val claudeTest2 = ClaudeTest2()
 
         // Start chat
         claudeTest2.chat()
