@@ -1,14 +1,11 @@
 package com.example.GymQuest.View
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
-import com.example.GymQuest.Adapter.QuestAdapter
 import com.example.GymQuest.R
 import okhttp3.Call
 import okhttp3.Callback
@@ -25,7 +22,7 @@ class DietActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.diet_activity)
 
-        val chatArea = findViewById<TextView>(R.id.textView4)
+        val chatArea = findViewById<TextView>(R.id.elementProtein)
 
         val promptText = findViewById<EditText>(R.id.foodText)
 
@@ -34,9 +31,9 @@ class DietActivity : AppCompatActivity() {
             runQuery(foodName) { response, calorie, fat, protein ->
                 runOnUiThread {
                     chatArea.text = response
-                    findViewById<TextView>(R.id.textView2).text = "Calorie: $calorie"
-                    findViewById<TextView>(R.id.textView3).text = "Fat: $fat"
-                    findViewById<TextView>(R.id.textView4).text = "Protein: $protein"
+                    findViewById<TextView>(R.id.elementCalorie).text = "Calorie: $calorie"
+                    findViewById<TextView>(R.id.elementFat).text = "Fat: $fat"
+                    findViewById<TextView>(R.id.elementProtein).text = "Protein: $protein"
                 }
             }
         }
