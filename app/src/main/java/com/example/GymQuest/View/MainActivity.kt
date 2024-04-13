@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -32,15 +33,14 @@ class MainActivity : AppCompatActivity() {
         questAdapter = QuestAdapter(emptyList())
         recyclerView.adapter = questAdapter
 
+        val wizard = findViewById<ImageView>(R.id.wizardImage)
+
+        wizard.setOnClickListener {
+            val intent = Intent(this, WizardActivity::class.java)
+            startActivity(intent)
+        }
+
         fetchQuests()
-
-        val recyclerCard = findViewById<RecyclerView>(R.id.recyclerview)
-
-//        recyclerCard.setOnClickListener {
-//            val intent = Intent(this, ViewQuestActivity::class.java)
-//            intent.putExtra("questName", questName)
-//            startActivity(intent)
-//        }
 
         fetchPlayerStats()
     }
