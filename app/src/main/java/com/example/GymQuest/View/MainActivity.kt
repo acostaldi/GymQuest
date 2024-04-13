@@ -75,10 +75,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun populatePlayerStats(player: Player) {
         // Populate EditText fields with player stats
-        findViewById<EditText>(R.id.editHealth).setText(player.health.toString())
-        findViewById<EditText>(R.id.editStrength).setText(player.strength.toString())
-        findViewById<EditText>(R.id.editDex).setText(player.dexterity.toString())
-        findViewById<EditText>(R.id.editStamina).setText(player.stamina.toString())
+        findViewById<EditText>(R.id.editHealth).setText("  HP: ${player.health}")
+        findViewById<EditText>(R.id.editStrength).setText("  Pow: ${player.strength}")
+        findViewById<EditText>(R.id.editDex).setText("  Dex: ${player.dexterity}")
+        findViewById<EditText>(R.id.editStamina).setText("  STA: ${player.stamina}")
     }
 
     private fun fetchQuests() {
