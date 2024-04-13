@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.GymQuest.Adapter.QuestAdapter
 import com.example.GymQuest.Model.FirebaseRepository
 import com.example.GymQuest.Model.Player
+import com.example.GymQuest.Model.Quest
 import com.example.GymQuest.R
 
 class MainActivity : AppCompatActivity() {
@@ -32,7 +33,9 @@ class MainActivity : AppCompatActivity() {
 
         recyclerView = findViewById(R.id.recyclerview)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        questAdapter = QuestAdapter(emptyList())
+
+        // Pass FirebaseRepository instance to QuestAdapter
+        questAdapter = QuestAdapter(emptyList(), firebaseRepository)
         recyclerView.adapter = questAdapter
 
         val wizard = findViewById<ImageView>(R.id.wizardImage)
@@ -51,12 +54,10 @@ class MainActivity : AppCompatActivity() {
 
         fetchQuests()
 
-
         fetchPlayerStats("Parker Hinrichs")
     }
 
-    private fun fetchPlayerStats(playerName : String) {
-
+    private fun fetchPlayerStats(playerName: String) {
         firebaseRepository.getPlayer(playerName,
             onSuccess = { players ->
                 runOnUiThread {
@@ -81,12 +82,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun fetchQuests() {
-        val firebaseRepo = FirebaseRepository()
-        firebaseRepo.getAllQuests(
+        firebaseRepository.getAllQuests(
             onSuccess = { quests ->
                 runOnUiThread {
-                    questAdapter = QuestAdapter(quests)
-                    recyclerView.adapter = questAdapter
+                    // Update QuestAdapter's data
+                    questAdapter.updateQuests(quests)
                 }
             },
             onFailure = { exception ->
@@ -95,3 +95,4 @@ class MainActivity : AppCompatActivity() {
         )
     }
 }
+

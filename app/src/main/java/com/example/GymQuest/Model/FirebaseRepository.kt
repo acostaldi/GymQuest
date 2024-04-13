@@ -12,6 +12,38 @@ class FirebaseRepository {
     private val questCollection = db.collection("quests")
     private val firebaseAuth = FirebaseAuth.getInstance()
 
+    fun updateQuest(quest: Quest, onComplete: (Boolean) -> Unit) {
+        val questDocRef = questCollection.document(quest.questName)
+        questDocRef.set(quest)
+            .addOnSuccessListener {
+                println("Quest document updated in Firestore for quest: ${quest.questName}")
+                onComplete(true)
+            }
+            .addOnFailureListener { e ->
+                println("Error updating quest document in Firestore: $e")
+                onComplete(false)
+            }
+    }
+
+    fun updatePlayer(player: Player, onComplete: (Boolean) -> Unit) {
+        val playerDocRef = playerCollection.document(player.name)
+        val playerData = hashMapOf(
+            "name" to player.name,
+            "strength" to player.strength,
+            "dexterity" to player.dexterity,
+            "stamina" to player.stamina,
+            "health" to player.health
+        )
+        playerDocRef.set(playerData)
+            .addOnSuccessListener {
+                println("Player document updated in Firestore for user: ${player.name}")
+                onComplete(true)
+            }
+            .addOnFailureListener { e ->
+                println("Error updating player document in Firestore: $e")
+                onComplete(false)
+            }
+    }
 
     fun addPlayer( name: String, strength: Int, dexterity: Int, stamina: Int, health: Int) {
         val playerDocRef = playerCollection.document(name)
