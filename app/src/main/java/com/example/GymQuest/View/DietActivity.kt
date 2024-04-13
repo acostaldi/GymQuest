@@ -1,6 +1,7 @@
 package com.example.GymQuest.View
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -14,15 +15,19 @@ import okhttp3.Request
 import okhttp3.Response
 import org.json.JSONArray
 import org.json.JSONException
+import org.json.JSONObject
 import java.io.IOException
 
 class DietActivity : AppCompatActivity() {
+
+    var totalCalories = 0
+    var totalFat = 0
+    var totalProtein = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.diet_activity)
-
-        val chatArea = findViewById<TextView>(R.id.elementProtein)
 
         val promptText = findViewById<EditText>(R.id.foodText)
 
@@ -30,13 +35,37 @@ class DietActivity : AppCompatActivity() {
             val foodName = promptText.text.toString()
             runQuery(foodName) { response, calorie, fat, protein ->
                 runOnUiThread {
-                    chatArea.text = response
-                    findViewById<TextView>(R.id.elementCalorie).text = "Calorie: $calorie"
-                    findViewById<TextView>(R.id.elementFat).text = "Fat: $fat"
-                    findViewById<TextView>(R.id.elementProtein).text = "Protein: $protein"
+
+                    var returnCalorie = extractFieldFromJson(response,"caloric")
+                    var returnFat = extractFieldFromJson(response,"fat")
+                    var returnProtein = extractFieldFromJson(response,"protein")
+
+                    totalCalories += returnCalorie
+                    totalFat += returnFat
+                    totalProtein += returnProtein
+
+                    findViewById<TextView>(R.id.elementCalorie).text = "Calorie(s): $totalCalories"
+                    findViewById<TextView>(R.id.elementFat).text = "Fat: $totalFat"
+                    findViewById<TextView>(R.id.elementProtein).text = "Protein: $totalProtein"
+
+                    if (totalProtein >= 80) {
+                        findViewById<TextView>(R.id.congratsProtein).visibility = View.VISIBLE
+                        findViewById<TextView>(R.id.secondCongrats).visibility = View.VISIBLE
+                    }
                 }
             }
         }
+    }
+
+    fun extractFieldFromJson(jsonString: String, field: String): Int {
+        val jsonObject = JSONObject(jsonString)
+        val dishes = jsonObject.getJSONArray("dishes")
+        val firstDish = dishes.getJSONObject(0)
+
+        if (firstDish.has(field))
+            return firstDish.getInt(field)
+
+        return 0
     }
 
     private fun runQuery(foodName: String, callback: (String, Int, Double, Double) -> Unit) {
@@ -45,7 +74,7 @@ class DietActivity : AppCompatActivity() {
         val request = Request.Builder()
             .url("https://dietagram.p.rapidapi.com/apiFood.php?name=$foodName&lang=en")
             .get()
-            .addHeader("X-RapidAPI-Key", "")
+            .addHeader("X-RapidAPI-Key", ApiKeys.DIET_API_KEY)
             .addHeader("X-RapidAPI-Host", "dietagram.p.rapidapi.com")
             .build()
 
@@ -59,11 +88,13 @@ class DietActivity : AppCompatActivity() {
                 val responseData = response.body?.string() ?: ""
 
                 try {
-                    val jsonArray = JSONArray(responseData)
-                    val jsonObject = jsonArray.getJSONObject(0) // Assuming only one dish is returned
-                    val calorie = jsonObject.getInt("caloric")
-                    val fat = jsonObject.getDouble("fat")
-                    val protein = jsonObject.getDouble("protein")
+                    val jsonObject = JSONObject(responseData)
+                    val dishes = jsonObject.getJSONArray("dishes")
+                    val firstDish = dishes.getJSONObject(0)
+
+                    val calorie = firstDish.getInt("caloric")
+                    val fat = firstDish.getDouble("fat")
+                    val protein = firstDish.getDouble("protein")
 
                     callback(responseData, calorie, fat, protein)
                 } catch (e: JSONException) {
