@@ -24,7 +24,7 @@ class LoginActivity : AppCompatActivity() {
         val claude = findViewById<Button>(R.id.button3)
 
         claude.setOnClickListener {
-            val intent = Intent(this, ClaudeTest2::class.java)
+            val intent = Intent(this, ClaudeTest3::class.java)
             startActivity(intent)
         }
 
