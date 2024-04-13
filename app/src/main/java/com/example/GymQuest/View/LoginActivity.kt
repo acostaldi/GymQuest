@@ -47,20 +47,6 @@ class LoginActivity : AppCompatActivity() {
             signInWithGoogle()
         }
 
-        val claude = findViewById<Button>(R.id.button3)
-
-        claude.setOnClickListener {
-            val intent = Intent(this, ClaudeAPI::class.java)
-            startActivity(intent)
-        }
-
-        val food = findViewById<Button>(R.id.button5)
-
-        food.setOnClickListener {
-            val intent = Intent(this, DietActivity::class.java)
-            startActivity(intent)
-        }
-
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()

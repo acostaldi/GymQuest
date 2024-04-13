@@ -6,29 +6,36 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.MainActivity">
+    tools:context=".View.MainActivity"
+    android:background="@drawable/login">
 
     <Button
         android:id="@+id/loginButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:backgroundTintMode="multiply"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:text="Sign in with google"
+        android:fontFamily="@font/fancy"
+        android:layout_marginBottom="32dp"
+        android:text="ENTER"
+        android:textSize="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/titlecard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:fontFamily="@font/ringm"
+        android:text="Gym Quest"
+        android:textColor="#D4AF37"
+        android:textSize="75dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="claude"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginButton" />
 
     <Button
         android:id="@+id/button5"
