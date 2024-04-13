@@ -22,7 +22,6 @@ class FirebaseRepository {
             "dexterity" to dexterity,
             "stamina" to stamina,
             "health" to health
-
         )
 
         playerDocRef.set(playerData)
