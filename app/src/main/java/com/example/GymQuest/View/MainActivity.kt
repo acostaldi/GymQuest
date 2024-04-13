@@ -42,6 +42,13 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val gnome = findViewById<ImageView>(R.id.chefImage)
+
+        gnome.setOnClickListener {
+            val intent = Intent(this, DietActivity::class.java)
+            startActivity(intent)
+        }
+
         fetchQuests()
 
 //        val playerField = findViewById<EditText>(R.id.usernameField)
