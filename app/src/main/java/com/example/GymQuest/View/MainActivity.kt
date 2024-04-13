@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -30,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         recyclerView = findViewById(R.id.recyclerview)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        questAdapter = QuestAdapter(emptyList())
+        questAdapter = QuestAdapter(emptyList(), firebaseRepository)
         recyclerView.adapter = questAdapter
 
         val wizard = findViewById<ImageView>(R.id.wizardImage)
@@ -64,10 +65,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun populatePlayerStats(player: Player) {
         // Populate EditText fields with player stats
-        findViewById<EditText>(R.id.editHealth).setText(player.health.toString())
-        findViewById<EditText>(R.id.editStrength).setText(player.strength.toString())
-        findViewById<EditText>(R.id.editDex).setText(player.dexterity.toString())
-        findViewById<EditText>(R.id.editStamina).setText(player.stamina.toString())
+        findViewById<TextView>(R.id.editHealth).setText(player.health.toString())
+        findViewById<TextView>(R.id.editStrength).setText(player.strength.toString())
+        findViewById<TextView>(R.id.editDex).setText(player.dexterity.toString())
+        findViewById<TextView>(R.id.editStamina).setText(player.stamina.toString())
     }
 
     private fun fetchQuests() {
@@ -75,7 +76,7 @@ class MainActivity : AppCompatActivity() {
         firebaseRepo.getAllQuests(
             onSuccess = { quests ->
                 runOnUiThread {
-                    questAdapter = QuestAdapter(quests)
+                    questAdapter = QuestAdapter(quests, firebaseRepository)
                     recyclerView.adapter = questAdapter
                 }
             },
