@@ -3,11 +3,24 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
     kotlin("plugin.serialization") version "1.9.23"
     id("com.google.gms.google-services")
+    id("com.chaquo.python")
 }
+
+apply(plugin = "com.chaquo.python")
 
 android {
     namespace = "com.example.GymQuest"
     compileSdk = 34
+
+    chaquopy {
+        defaultConfig {
+            pip {
+                install("requests")
+            }
+
+            buildPython("C:/Program Files (x86)/Microsoft Visual Studio/Shared/Python39_64/python.exe")
+        }
+    }
 
     defaultConfig {
         applicationId = "com.example.GymQuest"
@@ -17,6 +30,12 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            // On Apple silicon, you can omit x86_64.
+            abiFilters += listOf("arm64-v8a", "x86_64")
+        }
+
     }
 
     buildTypes {

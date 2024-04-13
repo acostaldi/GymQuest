@@ -21,7 +21,7 @@ class CreatePlayer : AppCompatActivity(){
 
         firebaseRepository = FirebaseRepository()
 
-        val editText1 = findViewById<EditText>(R.id.editText)
+        val editText1 = findViewById<EditText>(R.id.editText1)
 
         val createNewPlayer = findViewById<Button>(R.id.button)
 
