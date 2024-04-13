@@ -29,8 +29,13 @@ class CreatePlayer : AppCompatActivity(){
             // Get the player name from the EditText
             val playerName = editText1.text.toString()
 
+            val strength = 0
+            val dexterity = 0
+            val stamina = 0
+            val health = 100
+
             // Add the player name to the database
-            firebaseRepository.addPlayer(playerName)
+            firebaseRepository.addPlayer(playerName, strength, dexterity, stamina, health)
 
             // After adding the player name to the database, start the MainActivity
             val intent = Intent(this, MainActivity::class.java)
