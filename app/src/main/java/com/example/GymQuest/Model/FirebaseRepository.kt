@@ -8,24 +8,62 @@ import com.google.firebase.firestore.FirebaseFirestore
 class FirebaseRepository {
 
     private val db = FirebaseFirestore.getInstance()
-    private val patientsCollection = db.collection("users")
+    private val playerCollection = db.collection("users")
+    private val questCollection = db.collection("quests")
     private val firebaseAuth = FirebaseAuth.getInstance()
 
-    fun addPlayer(name: String) {
-        val patientDocRef = patientsCollection.document(name)
 
-        val patientData = hashMapOf(
-            "name" to name
+    fun addPlayer( name: String, strength: Int, dexterity: Int, stamina: Int, health: Int) {
+        val playerDocRef = playerCollection.document(name)
+
+        val playerData = hashMapOf(
+            "name" to name,
+            "strength" to stamina,
+            "dexterity" to dexterity,
+            "stamina" to stamina,
+            "health" to health
+
         )
 
-        patientDocRef.set(patientData)
+        playerDocRef.set(playerData)
             .addOnSuccessListener {
-                println("Patient document created/updated in Firestore for user: $name")
+                println("Player document created/updated in Firestore for user: $name")
             }
             .addOnFailureListener { e ->
-                println("Error creating/updating patient document in Firestore: $e")
+                println("Error creating/updating player document in Firestore: $e")
             }
     }
 
+    fun addQuest (questName: String, questDesc: String) {
+        val questDocRef = questCollection.document(questName)
 
+        val questData = hashMapOf(
+            "questName" to questName,
+            "questDesc" to questDesc
+        )
+
+        questDocRef.set(questData)
+            .addOnSuccessListener {
+                println("Quest document created/updated in Firestore for quest: $questName")
+            }
+            .addOnFailureListener { e ->
+                println("Error creating/updating quest document in Firestore: $e")
+            }
+
+    }
+
+    fun getAllQuests(onSuccess: (List<Quest>) -> Unit, onFailure: (Exception) -> Unit) {
+        questCollection.get()
+            .addOnSuccessListener { querySnapshot ->
+                val quests = mutableListOf<Quest>()
+                for (document in querySnapshot) {
+                    val quest = document.toObject(Quest::class.java)
+                    quests.add(quest)
+                }
+                onSuccess(quests)
+            }
+            .addOnFailureListener { e ->
+                onFailure(e)
+            }
+    }
 }
