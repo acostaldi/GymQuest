@@ -11,6 +11,16 @@ android {
     namespace = "com.example.GymQuest"
     compileSdk = 34
 
+    chaquopy {
+        defaultConfig {
+            pip {
+                install("requests")
+            }
+
+            buildPython("C:/Program Files (x86)/Microsoft Visual Studio/Shared/Python39_64/python.exe")
+        }
+    }
+
     defaultConfig {
 
         applicationId = "com.example.GymQuest"
@@ -26,12 +36,6 @@ android {
             abiFilters += listOf("arm64-v8a", "x86_64")
         }
 
-        // TODO: Uncomment this once python is fixed.
-        /*python {
-            pip {
-                install "requests"
-            }
-        }*/
     }
 
     buildTypes {
