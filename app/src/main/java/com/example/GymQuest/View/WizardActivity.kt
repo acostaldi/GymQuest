@@ -1,15 +1,13 @@
 package com.example.GymQuest.View
 
-
+import ApiKeys
 import android.os.Bundle
 import android.util.Log
-import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.chaquo.python.Python
 import com.chaquo.python.android.AndroidPlatform
-import com.example.GymQuest.ApiKeys
 import com.example.GymQuest.R
 
 class WizardActivity: AppCompatActivity() {
@@ -20,7 +18,7 @@ class WizardActivity: AppCompatActivity() {
 
         val chatArea = findViewById<TextView>(R.id.textView)
 
-        val aiPromptText = findViewById<TextView>(R.id.textView2)
+        val aiPromptText = findViewById<TextView>(R.id.elementCalorie)
 
         runQuery(aiPromptText.text.toString()) { response ->
             runOnUiThread {
