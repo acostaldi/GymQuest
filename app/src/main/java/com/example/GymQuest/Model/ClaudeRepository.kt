@@ -14,7 +14,7 @@ class ClaudeRepository private constructor(builder: Builder){
         this.encodeDefaults = true
     }
 
-    private var apiKey: String? = ""
+    private var apiKey: String? = ApiKeys.API_KEY
     private var model: String? = null
     private var maxTokens: Int? = null
     private var timeout = 0

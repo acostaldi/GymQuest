@@ -17,7 +17,7 @@ class ClaudeTest3 : AppCompatActivity(){
         setContentView(R.layout.activity_chat)
 
         val claudeRepository = ClaudeRepository.Builder()
-            .key("")
+            .key(ApiKeys.API_KEY)
             .model("claude-3")
             .maxTokensToSample(500)
             .build()
