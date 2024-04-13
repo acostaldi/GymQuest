@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
 
 //        val playerField = findViewById<EditText>(R.id.usernameField)
 //        val playerName = playerField.text.toString()
-        fetchPlayerStats("Temporary_Player_Name")
+        fetchPlayerStats("Parker Hinrichs")
     }
 
     private fun fetchPlayerStats(playerName : String) {
