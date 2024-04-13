@@ -48,4 +48,19 @@ class FirebaseRepository {
             }
 
     }
+
+    fun getAllQuests(onSuccess: (List<Quest>) -> Unit, onFailure: (Exception) -> Unit) {
+        questCollection.get()
+            .addOnSuccessListener { querySnapshot ->
+                val quests = mutableListOf<Quest>()
+                for (document in querySnapshot) {
+                    val quest = document.toObject(Quest::class.java)
+                    quests.add(quest)
+                }
+                onSuccess(quests)
+            }
+            .addOnFailureListener { e ->
+                onFailure(e)
+            }
+    }
 }
