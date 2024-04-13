@@ -1,10 +1,9 @@
 package com.example.GymQuest.Model
 
-import android.graphics.Color.BLUE
 import java.util.Scanner
 
 class ClaudeTest2 {
-    fun chat() {
+    fun chat(param: (Any) -> Unit) {
         val scan = Scanner(System.`in`)
         val klaude = ClaudeRepository.Builder()
             .model("claude-3")
