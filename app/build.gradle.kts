@@ -2,13 +2,17 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     kotlin("plugin.serialization") version "1.9.23"
+    id("com.chaquo.python")
 }
+
+apply(plugin = "com.chaquo.python")
 
 android {
     namespace = "com.example.GymQuest"
     compileSdk = 34
 
     defaultConfig {
+
         applicationId = "com.example.GymQuest"
         minSdk = 24
         targetSdk = 34
@@ -16,6 +20,18 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            // On Apple silicon, you can omit x86_64.
+            abiFilters += listOf("arm64-v8a", "x86_64")
+        }
+
+        // TODO: Uncomment this once python is fixed.
+        /*python {
+            pip {
+                install "requests"
+            }
+        }*/
     }
 
     buildTypes {

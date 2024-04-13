@@ -2,12 +2,10 @@ package com.example.GymQuest.View
 
 import android.os.Bundle
 import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.GymQuest.Model.ClaudeRepository
-import com.example.GymQuest.Model.KlaudeMessage
-import com.example.GymQuest.Model.KlaudeMessageType
+import com.chaquo.python.Python
+import com.chaquo.python.android.AndroidPlatform
 import com.example.GymQuest.R
 
 class ClaudeTest3 : AppCompatActivity(){
@@ -16,36 +14,32 @@ class ClaudeTest3 : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
 
-        val claudeRepository = ClaudeRepository.Builder()
-            .key(ApiKeys.API_KEY)
-            .model("claude-3")
-            .maxTokensToSample(500)
-            .build()
-
-        val editText = findViewById<EditText>(R.id.editText)
         val chatArea = findViewById<TextView>(R.id.textView)
 
-        val responseHandler: (String?) -> Unit = { response ->
-            runOnUiThread {
-                if (!response.isNullOrBlank()) {
-                    chatArea.append("Assistant: $response\n")
-                } else {
-                    chatArea.append("Assistant: No response\n")
-                }
-            }
-        }
-
         findViewById<Button>(R.id.button2).setOnClickListener {
-            val userInput = editText.text.toString().trim()
-            if (userInput.isNotBlank()) {
-                val message = KlaudeMessage(userInput, KlaudeMessageType.USER)
-                val messages = mutableListOf(message)
-                claudeRepository.chat(messages) { response ->
-                    responseHandler(response)
+            runPythonScript { response ->
+                runOnUiThread {
+                    chatArea.text = response
                 }
-                chatArea.append("You: $userInput\n")
-                editText.text.clear()
             }
         }
+    }
+
+    private fun runPythonScript(callback: (String) -> Unit) {
+        Thread {
+            // Start the Python interpreter
+            if (! Python.isStarted()) {
+                Python.start(AndroidPlatform(this))
+            }
+
+            val python = Python.getInstance()
+            val pythonScript = python.getModule("ClaudeTest") // Replace with your script's name
+
+            // Call a function from the script (replace "function_name" with your function's name)
+            val result = pythonScript.callAttr("query_API")
+
+            // Use the result (this assumes the function returns a string)
+            callback(result.toString())
+        }.start()
     }
 }
