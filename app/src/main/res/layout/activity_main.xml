@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="120dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -57,42 +57,55 @@
 
     <EditText
         android:id="@+id/editHealth"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="267dp"
+        android:layout_height="58dp"
         android:layout_marginTop="8dp"
+        android:background="@drawable/stone_1"
+        android:fontFamily="@font/chiseled"
+        android:textColor="@color/white"
         android:ems="10"
         android:inputType="text"
-        android:text="Health"
+        android:text="  HP:"
+        android:textSize="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editStrength"
-        android:layout_width="121dp"
-        android:layout_height="38dp"
+        android:layout_width="150dp"
+        android:layout_height="58dp"
+        android:background="@drawable/stone_1"
+        android:fontFamily="@font/chiseled"
+        android:textColor="@color/white"
         android:ems="10"
         android:inputType="text"
-        android:text="Strength"
+        android:text="  Pow:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editHealth" />
 
     <EditText
         android:id="@+id/editDex"
-        android:layout_width="121dp"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="58dp"
+        android:fontFamily="@font/chiseled"
+        android:textColor="@color/white"
+        android:background="@drawable/stone_1"
         android:ems="10"
         android:inputType="text"
-        android:text="Dex"
+        android:text="  Dex: "
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editStrength" />
 
     <EditText
         android:id="@+id/editStamina"
-        android:layout_width="121dp"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="58dp"
+        android:background="@drawable/stone_1"
+        android:fontFamily="@font/chiseled"
+        android:textColor="@color/white"
         android:ems="10"
         android:inputType="text"
-        android:text="Stamina"
+        android:text="  STA: "
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editDex" />
 
