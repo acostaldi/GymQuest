@@ -8,6 +8,7 @@ class FirebaseRepository {
 
     private val db = FirebaseFirestore.getInstance()
     private val playerCollection = db.collection("users")
+    private val questCollection = db.collection("quests")
 
     fun addPlayer( name: String, strength: Int, dexterity: Int, stamina: Int, health: Int) {
         val playerDocRef = playerCollection.document(name)
@@ -28,5 +29,23 @@ class FirebaseRepository {
             .addOnFailureListener { e ->
                 println("Error creating/updating player document in Firestore: $e")
             }
+    }
+
+    fun addQuest (questName: String, questDesc: String) {
+        val questDocRef = questCollection.document(questName)
+
+        val questData = hashMapOf(
+            "questName" to questName,
+            "questDesc" to questDesc
+        )
+
+        questDocRef.set(questData)
+            .addOnSuccessListener {
+                println("Quest document created/updated in Firestore for quest: $questName")
+            }
+            .addOnFailureListener { e ->
+                println("Error creating/updating quest document in Firestore: $e")
+            }
+
     }
 }
