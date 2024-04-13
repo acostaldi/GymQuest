@@ -3,12 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/gnomecooking">
 
     <TextView
         android:id="@+id/elementCalorie"
         android:layout_width="330dp"
         android:layout_height="126dp"
+        android:background="@drawable/stone_1"
+        android:fontFamily="@font/chiseled"
+        android:textColor="@color/white"
         android:layout_marginTop="28dp"
         android:font="@font/ringm"
         android:gravity="center"
@@ -23,6 +27,9 @@
         android:id="@+id/elementFat"
         android:layout_width="332dp"
         android:layout_height="111dp"
+        android:background="@drawable/stone_1"
+        android:fontFamily="@font/chiseled"
+        android:textColor="@color/white"
         android:font="@font/ringm"
         android:textSize="28sp"
         android:gravity="center"
@@ -31,10 +38,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/elementCalorie" />
 
+
     <TextView
         android:id="@+id/elementProtein"
         android:layout_width="336dp"
         android:layout_height="111dp"
+        android:background="@drawable/stone_1"
+        android:fontFamily="@font/chiseled"
+        android:textColor="@color/white"
         android:font="@font/ringm"
         android:textSize="28sp"
         android:gravity="center"
@@ -53,9 +64,13 @@
         android:layout_marginTop="40dp"
         android:ems="10"
         android:gravity="center"
+        android:background="@drawable/stone_1"
         android:font="@font/ringm"
+        android:fontFamily="@font/chiseled"
+        android:textColor="@color/white"
         android:inputType="text"
-        android:hint="Name"
+        android:textSize="30dp"
+        android:text="Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,6 +81,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Calculate food macros"
+        android:backgroundTint="@color/black"
+        android:fontFamily="@font/ringm"
+        android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
