@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    kotlin("plugin.serialization") version "1.9.23"
 }
 
 android {
@@ -45,4 +46,21 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    // Fuel HTTP client for making network requests
+    implementation("com.github.kittinunf.fuel:fuel:2.3.1")
+
+    //packages
+    //implementation("com.github.kittinunf.fuel:<package>:2.3.1")
+
+    // Kotlinx Serialization for JSON serialization/deserialization
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
+
+    // AndroidX Core library
+    implementation("androidx.core:core-ktx:1.12.0")
+
+    // AndroidX AppCompat library
+    implementation("androidx.appcompat:appcompat:<latest-version>")
+
+    // Google Material Design library
+    implementation("com.google.android.material:material:<latest-version>")
 }
