@@ -48,13 +48,13 @@ class FirebaseRepository {
                 onFailure(e)
             }
     }
-    fun addQuest (questName: String, questDesc: String, isComplete: Boolean) {
+    fun addQuest (questName: String, questDesc: String, isCompleted: Boolean) {
         val questDocRef = questCollection.document(questName)
 
         val questData = hashMapOf(
             "questName" to questName,
             "questDesc" to questDesc,
-            "isCompleted" to isComplete
+            "isCompleted" to isCompleted
         )
 
         questDocRef.set(questData)
@@ -74,6 +74,7 @@ class FirebaseRepository {
                 for (document in querySnapshot) {
                     val quest = document.toObject(Quest::class.java)
                     quests.add(quest)
+                    Log.d("FireBaseRepo", "Quest: ${quest.questName}, isCompleted: ${quest.isCompleted}")
                 }
                 onSuccess(quests)
             }

@@ -1,6 +1,9 @@
 package com.example.GymQuest.Model
 
 data class Quest(
-    val questName: String = "",
-    val questDesc: String = ""
+    var questName: String = "",
+    var questDesc: String = "",
+
+    @field:JvmField
+    var isCompleted: Boolean = false
 )

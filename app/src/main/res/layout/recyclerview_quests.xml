@@ -28,7 +28,7 @@
         app:layout_constraintTop_toBottomOf="@id/tvQuestName" />
 
     <CheckBox
-        android:id="@+id/completed"
+        android:id="@+id/isCompleted"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
