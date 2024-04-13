@@ -1,8 +1,11 @@
-package com.example.GymQuest.Model
+package com.example.GymQuest.View
 
+import com.example.GymQuest.Model.ClaudeRepository
+import com.example.GymQuest.Model.KlaudeMessage
+import com.example.GymQuest.Model.KlaudeMessageType
 import java.util.Scanner
 
-class ClaudeTest2 {
+class ClaudeTest3 {
     fun chat(param: (Any) -> Unit) {
         val scan = Scanner(System.`in`)
         val klaude = ClaudeRepository.Builder()
