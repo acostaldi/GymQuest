@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+Use @color/color_name to access the color
+Use android:fontFamily="@font/sf_pro_text_regular" to apply a font
+-->
 <resources>
     <color name="GymBlue">#037bfc</color>
     <color name="GymRed">#FF0000</color>

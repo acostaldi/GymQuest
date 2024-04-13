@@ -46,6 +46,7 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="text"
+        android:fontFamily="@font/sf_pro_text_regular"
         android:text="Health"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView2" />
@@ -56,6 +57,7 @@
         android:layout_height="38dp"
         android:ems="10"
         android:inputType="text"
+        android:fontFamily="@font/sf_pro_text_regular"
         android:text="Strength"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextText" />
@@ -66,6 +68,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="text"
+        android:fontFamily="@font/sf_pro_text_regular"
         android:text="Dex"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editStrength" />
@@ -76,6 +79,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="text"
+        android:fontFamily="@font/sf_pro_text_regular"
         android:text="Stamina"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editHealth" />

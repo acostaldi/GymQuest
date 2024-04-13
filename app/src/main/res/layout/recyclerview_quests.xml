@@ -12,6 +12,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:fontFamily="@font/sf_pro_text_regular"
         android:text="QuestName"
         android:textColor="@color/black"
         android:textSize="24sp"
@@ -24,6 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="Description"
+        android:fontFamily="@font/sf_pro_text_regular"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvQuestName" />
 

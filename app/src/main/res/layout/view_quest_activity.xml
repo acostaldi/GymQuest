@@ -13,6 +13,7 @@
         android:ems="10"
         android:inputType="text"
         android:text="Name"
+        android:fontFamily="@font/sf_pro_text_regular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,6 +25,7 @@
         android:layout_marginTop="32dp"
         android:ems="10"
         android:gravity="start|top"
+        android:fontFamily="@font/sf_pro_text_regular"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
