@@ -12,7 +12,7 @@ class FirebaseRepository {
     fun addPlayer( name: String, strength: Int, dexterity: Int, stamina: Int, health: Int) {
         val playerDocRef = playerCollection.document(name)
 
-        val patientData = hashMapOf(
+        val playerData = hashMapOf(
             "name" to name,
             "strength" to stamina,
             "dexterity" to dexterity,
@@ -21,12 +21,12 @@ class FirebaseRepository {
 
         )
 
-        playerDocRef.set(patientData)
+        playerDocRef.set(playerData)
             .addOnSuccessListener {
-                println("Patient document created/updated in Firestore for user: $name")
+                println("Player document created/updated in Firestore for user: $name")
             }
             .addOnFailureListener { e ->
-                println("Error creating/updating patient document in Firestore: $e")
+                println("Error creating/updating player document in Firestore: $e")
             }
     }
 }
