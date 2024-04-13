@@ -28,6 +28,14 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = questAdapter
 
         fetchQuests()
+
+        val recyclerCard = findViewById<RecyclerView>(R.id.recyclerview)
+
+//        recyclerCard.setOnClickListener {
+//            val intent = Intent(this, ViewQuestActivity::class.java)
+//            intent.putExtra("questName", questName)
+//            startActivity(intent)
+//        }
     }
 
     private fun fetchQuests() {
