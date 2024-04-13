@@ -2,6 +2,7 @@ package com.example.GymQuest.View
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
@@ -42,9 +43,11 @@ class LoginActivity : AppCompatActivity() {
         val login = findViewById<Button>(R.id.loginButton)
         firebaseRepository = FirebaseRepository()
         login.setOnClickListener {
+
+            signInWithGoogle()
+
 //            val intent = Intent(this, CreatePlayer::class.java)
 //            startActivity(intent)
-            signInWithGoogle()
         }
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -53,6 +56,8 @@ class LoginActivity : AppCompatActivity() {
             .build()
 
         googleSignInClient = GoogleSignIn.getClient(this, gso)
+
+
     }
 
     private fun signInWithGoogle() {
@@ -83,6 +88,7 @@ class LoginActivity : AppCompatActivity() {
                     startActivity(intent)
                     finish()
                 } else {
+                    Log.w("myApp", "failed to authenticate");
                     // Handle authentication failure
                 }
             }
