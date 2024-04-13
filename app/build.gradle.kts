@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     kotlin("plugin.serialization") version "1.9.23"
+    id("com.google.gms.google-services")
     id("com.chaquo.python")
 }
 
@@ -22,7 +23,6 @@ android {
     }
 
     defaultConfig {
-
         applicationId = "com.example.GymQuest"
         minSdk = 24
         targetSdk = 34
@@ -63,6 +63,10 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.firebase.database)
+    implementation(libs.firebase.auth.ktx)
+    implementation(libs.firebase.firestore.ktx)
+    implementation(libs.play.services.auth)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -83,4 +87,18 @@ dependencies {
 
     // Google Material Design library
     implementation("com.google.android.material:material:<latest-version>")
+
+    //
+    // Google Play Store Integration for Authentication //
+    //
+
+//    // Import the BoM for the Firebase platform
+//    implementation(platform("com.google.firebase:firebase-bom:32.8.1"))
+//
+//    // Add the dependency for the Firebase Authentication library
+//    // When using the BoM, you don't specify versions in Firebase library dependencies
+//    implementation("com.google.firebase:firebase-auth")
+//
+//    // Also add the dependency for the Google Play services library and specify its version
+//    implementation("com.google.android.gms:play-services-auth:21.0.0")
 }
