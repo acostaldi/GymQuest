@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.example.GymQuest.ApiKeys
 import com.example.GymQuest.Model.FirebaseRepository
 import com.example.GymQuest.Model.Player
 import com.example.GymQuest.R

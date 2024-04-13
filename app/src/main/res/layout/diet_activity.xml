@@ -70,7 +70,7 @@
         android:textColor="@color/white"
         android:inputType="text"
         android:textSize="30dp"
-        android:text="Name"
+        android:hint="Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
