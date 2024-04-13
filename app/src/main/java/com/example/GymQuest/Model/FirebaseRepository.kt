@@ -47,13 +47,15 @@ class FirebaseRepository {
                 onFailure(e)
             }
     }
-    fun addQuest (questName: String, questDesc: String, isCompleted: Boolean) {
+    fun addQuest (questName: String, questDesc: String, isCompleted: Boolean, points: Number, category: String) {
         val questDocRef = questCollection.document(questName)
 
         val questData = hashMapOf(
             "questName" to questName,
             "questDesc" to questDesc,
-            "isCompleted" to isCompleted
+            "isCompleted" to isCompleted,
+            "points" to points,
+            "category" to category
         )
 
         questDocRef.set(questData)

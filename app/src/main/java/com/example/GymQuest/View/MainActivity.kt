@@ -51,8 +51,7 @@ class MainActivity : AppCompatActivity() {
 
         fetchQuests()
 
-//        val playerField = findViewById<EditText>(R.id.usernameField)
-//        val playerName = playerField.text.toString()
+
         fetchPlayerStats("Parker Hinrichs")
     }
 
