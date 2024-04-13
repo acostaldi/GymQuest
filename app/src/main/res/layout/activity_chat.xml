@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/claudeQuery"
         android:layout_width="296dp"
         android:layout_height="120dp"
         android:hint="Query Claude"
