@@ -2,6 +2,7 @@ package com.example.GymQuest.Model
 
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
 
 class FirebaseRepository {
@@ -9,6 +10,8 @@ class FirebaseRepository {
     private val db = FirebaseFirestore.getInstance()
     private val playerCollection = db.collection("users")
     private val questCollection = db.collection("quests")
+    private val firebaseAuth = FirebaseAuth.getInstance()
+
 
     fun addPlayer( name: String, strength: Int, dexterity: Int, stamina: Int, health: Int) {
         val playerDocRef = playerCollection.document(name)
