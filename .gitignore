@@ -16,3 +16,4 @@ local.properties
 .idea/deploymentTargetDropDown.xml
 app/src/main/java/com/example/GymQuest/globalApiKey.kt
 .idea/shelf/
+build.gradle.kts
