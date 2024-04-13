@@ -37,8 +37,10 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login_activity)
 
+        firebaseAuth = FirebaseAuth.getInstance()
+
         val login = findViewById<Button>(R.id.loginButton)
-        val firebaseRepository = FirebaseRepository()
+        firebaseRepository = FirebaseRepository()
         login.setOnClickListener {
 //            val intent = Intent(this, CreatePlayer::class.java)
 //            startActivity(intent)
@@ -58,6 +60,8 @@ class LoginActivity : AppCompatActivity() {
         signInLauncher.launch(signInIntent)
     }
 
+
+
 //    signInRequest = BeginSignInRequest.builder()
 //        .setGoogleIdTokenRequestOptions(
 //            BeginSignInRequest.GoogleIdTokenRequestOptions.builder.setSupported(true)
@@ -75,7 +79,7 @@ class LoginActivity : AppCompatActivity() {
             val account = task.getResult(ApiException::class.java)!!
             firebaseAuthWithGoogle(account.idToken!!) { success, userId ->
                 if (success) {
-                    val intent = Intent(this, Map::class.java)
+                    val intent = Intent(this, CreatePlayer::class.java)
                     startActivity(intent)
                     finish()
                 } else {
