@@ -2,11 +2,13 @@ package com.example.GymQuest.View
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.GymQuest.Adapter.QuestAdapter
@@ -24,10 +26,6 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN or
-                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or
-                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-
         firebaseRepository = FirebaseRepository()
 
         recyclerView = findViewById(R.id.recyclerview)
@@ -42,21 +40,13 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val gnome = findViewById<ImageView>(R.id.chefImage)
-
-        gnome.setOnClickListener {
-            val intent = Intent(this, DietActivity::class.java)
-            startActivity(intent)
-        }
-
         fetchQuests()
 
-
-        fetchPlayerStats("Parker Hinrichs")
+        fetchPlayerStats()
     }
 
-    private fun fetchPlayerStats(playerName : String) {
-
+    private fun fetchPlayerStats() {
+        val playerName = "your_player_name_here" // Replace with the actual player name
         firebaseRepository.getPlayer(playerName,
             onSuccess = { players ->
                 runOnUiThread {
@@ -74,10 +64,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun populatePlayerStats(player: Player) {
         // Populate EditText fields with player stats
-        findViewById<EditText>(R.id.editHealth).setText("  HP: ${player.health}")
-        findViewById<EditText>(R.id.editStrength).setText("  Pow: ${player.strength}")
-        findViewById<EditText>(R.id.editDex).setText("  Dex: ${player.dexterity}")
-        findViewById<EditText>(R.id.editStamina).setText("  STA: ${player.stamina}")
+        findViewById<EditText>(R.id.editHealth).setText(player.health.toString())
+        findViewById<EditText>(R.id.editStrength).setText(player.strength.toString())
+        findViewById<EditText>(R.id.editDex).setText(player.dexterity.toString())
+        findViewById<EditText>(R.id.editStamina).setText(player.stamina.toString())
     }
 
     private fun fetchQuests() {

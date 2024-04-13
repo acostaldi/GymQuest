@@ -15,3 +15,5 @@
 local.properties
 .idea/deploymentTargetDropDown.xml
 app/src/main/java/com/example/GymQuest/globalApiKey.kt
+.gradle/config.properties
+app/build.gradle.kts
