@@ -8,9 +8,36 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="346dp"
-        android:layout_height="493dp"
-        app:srcCompat="@drawable/test"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="63dp" />
+        android:layout_width="305dp"
+        android:layout_height="484dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/test" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/recyclerview"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:padding="16dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintRight_toRightOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/composeView"-->
+<!--            tools:listitem="@layout/recyclerview_quests" />-->
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
