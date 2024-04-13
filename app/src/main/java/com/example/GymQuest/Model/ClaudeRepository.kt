@@ -15,8 +15,8 @@ class ClaudeRepository private constructor(builder: Builder){
     }
 
     private var apiKey: String? = ApiKeys.API_KEY
-    private var model: String? = null
-    private var maxTokens: Int? = null
+    private var model: String? = "claude-3-opus-20240229"
+    private var maxTokens: Int? = 500
     private var timeout = 0
     private var temperature = 0.5f
 
