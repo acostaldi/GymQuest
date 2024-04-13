@@ -25,7 +25,7 @@
             android:name=".View.ClaudeTest2"
             android:exported="false"/>
         <activity
-            android:name=".View.ClaudeTest3"
+            android:name=".View.ClaudeAPI"
             android:exported="false"/>
         <activity
             android:name=".View.LoginActivity"
