@@ -55,7 +55,7 @@
         </LinearLayout>
     </ScrollView>
 
-    <EditText
+    <TextView
         android:id="@+id/editHealth"
         android:layout_width="267dp"
         android:layout_height="58dp"
@@ -70,7 +70,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
+    <TextView
         android:id="@+id/editStrength"
         android:layout_width="150dp"
         android:layout_height="58dp"
@@ -83,7 +83,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editHealth" />
 
-    <EditText
+    <TextView
         android:id="@+id/editDex"
         android:layout_width="150dp"
         android:layout_height="58dp"
@@ -96,7 +96,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editStrength" />
 
-    <EditText
+    <TextView
         android:id="@+id/editStamina"
         android:layout_width="150dp"
         android:layout_height="58dp"

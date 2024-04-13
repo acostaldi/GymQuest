@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -75,10 +76,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun populatePlayerStats(player: Player) {
         // Populate EditText fields with player stats
-        findViewById<EditText>(R.id.editHealth).setText("  HP: ${player.health}")
-        findViewById<EditText>(R.id.editStrength).setText("  Pow: ${player.strength}")
-        findViewById<EditText>(R.id.editDex).setText("  Dex: ${player.dexterity}")
-        findViewById<EditText>(R.id.editStamina).setText("  STA: ${player.stamina}")
+        findViewById<TextView>(R.id.editHealth).setText("  HP: ${player.health}")
+        findViewById<TextView>(R.id.editStrength).setText("  Pow: ${player.strength}")
+        findViewById<TextView>(R.id.editDex).setText("  Dex: ${player.dexterity}")
+        findViewById<TextView>(R.id.editStamina).setText("  STA: ${player.stamina}")
     }
 
     private fun fetchQuests() {
