@@ -1,7 +1,5 @@
 package com.example.GymQuest.Model
 
-import android.util.Log
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class FirebaseRepository {
@@ -28,6 +26,21 @@ class FirebaseRepository {
             }
             .addOnFailureListener { e ->
                 println("Error creating/updating player document in Firestore: $e")
+            }
+    }
+
+    fun getPlayer(name: String, onSuccess: (List<Player>) -> Unit, onFailure: (Exception) -> Unit) {
+        playerCollection.get()
+            .addOnSuccessListener { querySnapshot ->
+                val quests = mutableListOf<Player>()
+                for (document in querySnapshot) {
+                    val player = document.toObject(Player::class.java)
+                    quests.add(player)
+                }
+                onSuccess(quests)
+            }
+            .addOnFailureListener { e ->
+                onFailure(e)
             }
     }
 
