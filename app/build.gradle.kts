@@ -20,7 +20,7 @@ android {
                 install("requests")
             }
 
-            buildPython("C:/Program Files (x86)/Microsoft Visual Studio/Shared/Python39_64/python.exe")
+            buildPython("C:\\Users\\amade\\AppData\\Local\\Programs\\Python\\Python311\\python.exe")
         }
     }
 
@@ -98,4 +98,7 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.8.1"))
 
     implementation("com.firebaseui:firebase-ui-auth:7.2.0")
+
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+
 }
