@@ -8,8 +8,8 @@ import com.google.firebase.firestore.FirebaseFirestore
 class FirebaseRepository {
 
     private val db = FirebaseFirestore.getInstance()
-    private val playerCollection = db.collection("users")
-    private val questCollection = db.collection("quests")
+    private val playerCollection = db.collection("/users")
+    private val questCollection = db.collection("/quests")
     private val firebaseAuth = FirebaseAuth.getInstance()
 
 
