@@ -19,7 +19,7 @@
             android:name=".View.CreatePlayer"
             android:exported="false"/>
         <activity
-            android:name=".View.LoginActivity"
+            android:name=".View.FirebaseUIActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
