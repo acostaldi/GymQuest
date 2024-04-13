@@ -52,7 +52,7 @@ class LoginActivity : AppCompatActivity() {
             .requestEmail()
             .build()
 
-        googleSignInClient = GoogleSignIn.getClient(this, gso)
+        //googleSignInClient = GoogleSignIn.getClient(this, gso)
     }
 
     private fun signInWithGoogle() {
