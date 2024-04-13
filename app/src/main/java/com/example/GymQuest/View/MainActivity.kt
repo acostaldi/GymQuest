@@ -3,13 +3,10 @@ package com.example.GymQuest.View
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.GymQuest.Adapter.QuestAdapter
@@ -47,11 +44,13 @@ class MainActivity : AppCompatActivity() {
 
         fetchQuests()
 
-        fetchPlayerStats()
+//        val playerField = findViewById<EditText>(R.id.usernameField)
+//        val playerName = playerField.text.toString()
+        fetchPlayerStats("Temporary_Player_Name")
     }
 
-    private fun fetchPlayerStats() {
-        val playerName = "your_player_name_here" // Replace with the actual player name
+    private fun fetchPlayerStats(playerName : String) {
+
         firebaseRepository.getPlayer(playerName,
             onSuccess = { players ->
                 runOnUiThread {
