@@ -9,11 +9,16 @@ class FirebaseRepository {
     private val db = FirebaseFirestore.getInstance()
     private val patientsCollection = db.collection("users")
 
-    fun addPlayer(name: String) {
+    fun addPlayer( name: String, strength: Int, dexterity: Int, stamina: Int, health: Int) {
         val patientDocRef = patientsCollection.document(name)
 
         val patientData = hashMapOf(
-            "name" to name
+            "name" to name,
+            "strength" to stamina,
+            "dexterity" to dexterity,
+            "stamina" to stamina,
+            "health" to health
+
         )
 
         patientDocRef.set(patientData)
