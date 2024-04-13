@@ -1,32 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/fantasy">
+    android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="-20dp"
-        android:layout_marginTop="370dp"
-        android:layout_marginEnd="-20dp"
+        android:id="@+id/imageView2"
+        android:layout_width="305dp"
+        android:layout_height="484dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/scroll" />
+        app:srcCompat="@drawable/stick" />
 
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="340dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText4">
+        app:layout_constraintTop_toBottomOf="@+id/imageView2">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -45,67 +42,77 @@
     </ScrollView>
 
     <EditText
-        android:id="@+id/editTextText"
-        android:layout_width="wrap_content"
+        android:id="@+id/editHealth"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="64dp"
+        android:background="@drawable/curved_rectangle"
         android:ems="10"
+        android:focusable="false"
         android:fontFamily="@font/sf_pro_text_regular"
-        android:inputType="text"
+        android:gravity="center"
+        android:inputType="none"
         android:text="Health"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.08"
+        android:textColor="@color/GymBlue"
+        app:layout_constraintEnd_toStartOf="@+id/editDex"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editStrength"
-        android:layout_width="121dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="4dp"
-        android:ems="10"
-        android:fontFamily="@font/sf_pro_text_regular"
-        android:inputType="text"
-        android:text="Strength"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.055"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText" />
-
-    <EditText
-        android:id="@+id/editHealth"
-        android:layout_width="121dp"
+        android:id="@+id/editDex"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/curved_rectangle"
         android:ems="10"
+        android:focusable="false"
         android:fontFamily="@font/sf_pro_text_regular"
-        android:inputType="text"
+        android:gravity="center"
+        android:inputType="none"
         android:text="Dex"
+        android:textColor="@color/GymBlue"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.055"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editStrength" />
+        app:layout_constraintStart_toEndOf="@+id/editHealth"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextText4"
-        android:layout_width="121dp"
+        android:id="@+id/editStrength"
+        android:layout_width="128dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="56dp"
+        android:background="@drawable/curved_rectangle"
         android:ems="10"
+        android:focusable="false"
         android:fontFamily="@font/sf_pro_text_regular"
-        android:inputType="text"
-        android:text="Stamina"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.055"
+        android:gravity="center"
+        android:inputType="none"
+        android:text="Strength"
+        android:textColor="@color/GymBlue"
+        app:layout_constraintEnd_toStartOf="@+id/editStamina"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editHealth" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="129dp"
-        android:layout_height="129dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+    <EditText
+        android:id="@+id/editStamina"
+        android:layout_width="128dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/curved_rectangle"
+        android:ems="10"
+        android:focusable="false"
+        android:fontFamily="@font/sf_pro_text_regular"
+        android:gravity="center"
+        android:inputType="none"
+        android:text="Stamina"
+        android:textColor="@color/GymBlue"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/wizard_circle" />
+        app:layout_constraintStart_toEndOf="@+id/editStrength"
+        app:layout_constraintTop_toBottomOf="@+id/editDex" />
+
+<!-- Other views -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

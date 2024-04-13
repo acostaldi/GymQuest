@@ -17,3 +17,4 @@ local.properties
 app/src/main/java/com/example/GymQuest/globalApiKey.kt
 .idea/shelf/
 build.gradle.kts
+.gradle/config.properties
