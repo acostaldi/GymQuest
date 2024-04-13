@@ -1,6 +1,5 @@
 package com.example.GymQuest.View
 
-
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
