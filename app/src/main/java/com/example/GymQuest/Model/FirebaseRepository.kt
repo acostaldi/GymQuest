@@ -12,6 +12,38 @@ class FirebaseRepository {
     private val questCollection = db.collection("quests")
     private val firebaseAuth = FirebaseAuth.getInstance()
 
+    fun updateQuest(quest: Quest, onComplete: (Boolean) -> Unit) {
+        val questDocRef = questCollection.document(quest.questName)
+        questDocRef.set(quest)
+            .addOnSuccessListener {
+                println("Quest document updated in Firestore for quest: ${quest.questName}")
+                onComplete(true)
+            }
+            .addOnFailureListener { e ->
+                println("Error updating quest document in Firestore: $e")
+                onComplete(false)
+            }
+    }
+
+    fun updatePlayer(player: Player, onComplete: (Boolean) -> Unit) {
+        val playerDocRef = playerCollection.document(player.name)
+        val playerData = hashMapOf(
+            "name" to player.name,
+            "strength" to player.strength,
+            "dexterity" to player.dexterity,
+            "stamina" to player.stamina,
+            "health" to player.health
+        )
+        playerDocRef.set(playerData)
+            .addOnSuccessListener {
+                println("Player document updated in Firestore for user: ${player.name}")
+                onComplete(true)
+            }
+            .addOnFailureListener { e ->
+                println("Error updating player document in Firestore: $e")
+                onComplete(false)
+            }
+    }
 
     fun addPlayer( name: String, strength: Int, dexterity: Int, stamina: Int, health: Int) {
         val playerDocRef = playerCollection.document(name)
@@ -22,7 +54,6 @@ class FirebaseRepository {
             "dexterity" to dexterity,
             "stamina" to stamina,
             "health" to health
-
         )
 
         playerDocRef.set(playerData)
@@ -34,12 +65,29 @@ class FirebaseRepository {
             }
     }
 
-    fun addQuest (questName: String, questDesc: String) {
+    fun getPlayer(name: String, onSuccess: (List<Player>) -> Unit, onFailure: (Exception) -> Unit) {
+        playerCollection.get()
+            .addOnSuccessListener { querySnapshot ->
+                val quests = mutableListOf<Player>()
+                for (document in querySnapshot) {
+                    val player = document.toObject(Player::class.java)
+                    quests.add(player)
+                }
+                onSuccess(quests)
+            }
+            .addOnFailureListener { e ->
+                onFailure(e)
+            }
+    }
+    fun addQuest (questName: String, questDesc: String, isCompleted: Boolean, questReward: String, questRewardAmount: Int) {
         val questDocRef = questCollection.document(questName)
 
         val questData = hashMapOf(
             "questName" to questName,
-            "questDesc" to questDesc
+            "questDesc" to questDesc,
+            "isCompleted" to isCompleted,
+            "questReward" to questReward,
+            "questRewardAmount" to questRewardAmount
         )
 
         questDocRef.set(questData)
@@ -59,6 +107,7 @@ class FirebaseRepository {
                 for (document in querySnapshot) {
                     val quest = document.toObject(Quest::class.java)
                     quests.add(quest)
+                    Log.d("FireBaseRepo", "Quest: ${quest.questName}, isCompleted: ${quest.isCompleted}")
                 }
                 onSuccess(quests)
             }

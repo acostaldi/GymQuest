@@ -20,7 +20,7 @@ def query_API(API_KEY, AI_Prompt):
     }
 
     response = requests.post(API_URL, headers=headers, json=data)
-    
+
     if response.status_code == 200:
         return extract_text(response.json())
     else:
@@ -43,7 +43,7 @@ def query_story_API(API_KEY):
         "system": "You are an AI assistant acting as a wise wizard your job is to engage the user into following a fitness plan by framing it as training and an epic quest",
         "messages": [
             {"role": "user",
-            "content": "Let's create a brief (5 lines at most) yet engaging introduction as our hero (the user) is about to embark on a journey of fitness to for both power and fun"}
+            "content": "Let's create a brief (5 lines at most) yet engaging introduction as our hero (the user) is about to embark on a journey of fitness to for both power and fun, You must give them a workout set to inspire them to be fit keeping with the fantasy setting"}
         ]
     }
 

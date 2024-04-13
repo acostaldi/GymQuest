@@ -37,19 +37,14 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login_activity)
 
+        firebaseAuth = FirebaseAuth.getInstance()
+
         val login = findViewById<Button>(R.id.loginButton)
-        val firebaseRepository = FirebaseRepository()
+        firebaseRepository = FirebaseRepository()
         login.setOnClickListener {
-//            val intent = Intent(this, CreatePlayer::class.java)
-//            startActivity(intent)
-            signInWithGoogle()
-        }
-
-        val claude = findViewById<Button>(R.id.button3)
-
-        claude.setOnClickListener {
-            val intent = Intent(this, ClaudeAPI::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+            signInWithGoogle()
         }
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -65,15 +60,6 @@ class LoginActivity : AppCompatActivity() {
         signInLauncher.launch(signInIntent)
     }
 
-//    signInRequest = BeginSignInRequest.builder()
-//        .setGoogleIdTokenRequestOptions(
-//            BeginSignInRequest.GoogleIdTokenRequestOptions.builder.setSupported(true)
-//            // Your server's client ID, not your Android client ID.
-//            .setServerClientId(getString(R.string.your_web_client_id)
-//    )
-//    // Only show accounts previously used to sign in.
-//    .setFilterByAuthorizedAccounts(true)
-//    .build())
 
     private fun handleSignInResult(data: Intent?) {
         val task = GoogleSignIn.getSignedInAccountFromIntent(data)
@@ -82,7 +68,8 @@ class LoginActivity : AppCompatActivity() {
             val account = task.getResult(ApiException::class.java)!!
             firebaseAuthWithGoogle(account.idToken!!) { success, userId ->
                 if (success) {
-                    val intent = Intent(this, Map::class.java)
+                    // TODO: Make check so that if user already exists, they are taken to MainActivity
+                    val intent = Intent(this, CreatePlayer::class.java)
                     startActivity(intent)
                     finish()
                 } else {
