@@ -1,8 +1,8 @@
-
+import com.example.GymQuest.Model.ClaudeRepository
 
 fun fridge(val input: String)
 {
-    val KlaudeClient = KlaudeCLient.Builder()
+    val KlaudeClient = ClaudeRepository.Builder()
         .key("CLAUDE_API_KEY")
         .model("claude-3")
         .maxTokensToSample(1000)
@@ -11,7 +11,7 @@ fun fridge(val input: String)
     val text = input
     KlaudeClient.complete($text)
     {
-        result -> print(result ?: [empty])
+        var result -> print(result ?: [empty])
     }
 
 }
