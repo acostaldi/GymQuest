@@ -33,10 +33,21 @@ class QuestAdapter(
         holder.questNameTextView.text = currentQuest.questName
         holder.questDescTextView.text = currentQuest.questDesc
         holder.questCompletedCheckBox.isChecked = currentQuest.isCompleted
+        
 
         holder.questCompletedCheckBox.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 currentQuest.isCompleted = true
+                firebaseRepository.updateQuest(currentQuest) { isSuccess ->
+                    if (isSuccess) {
+                        // Update user stats
+                        updatePlayerStats(currentQuest)
+                    } else {
+                        // Handle failure
+                    }
+                }
+            } else {
+                currentQuest.isCompleted = false
                 firebaseRepository.updateQuest(currentQuest) { isSuccess ->
                     if (isSuccess) {
                         // Update user stats
