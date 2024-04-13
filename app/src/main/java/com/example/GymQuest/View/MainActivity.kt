@@ -2,12 +2,11 @@ package com.example.GymQuest.View
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
+import android.view.View
 import android.widget.EditText
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.GymQuest.Adapter.QuestAdapter
@@ -25,6 +24,10 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN or
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or
+                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+
         firebaseRepository = FirebaseRepository()
 
         recyclerView = findViewById(R.id.recyclerview)
@@ -32,21 +35,22 @@ class MainActivity : AppCompatActivity() {
         questAdapter = QuestAdapter(emptyList())
         recyclerView.adapter = questAdapter
 
+        val wizard = findViewById<ImageView>(R.id.wizardImage)
+
+        wizard.setOnClickListener {
+            val intent = Intent(this, WizardActivity::class.java)
+            startActivity(intent)
+        }
+
         fetchQuests()
 
-        val recyclerCard = findViewById<RecyclerView>(R.id.recyclerview)
-
-//        recyclerCard.setOnClickListener {
-//            val intent = Intent(this, ViewQuestActivity::class.java)
-//            intent.putExtra("questName", questName)
-//            startActivity(intent)
-//        }
-
-        fetchPlayerStats()
+//        val playerField = findViewById<EditText>(R.id.usernameField)
+//        val playerName = playerField.text.toString()
+        fetchPlayerStats("Temporary_Player_Name")
     }
 
-    private fun fetchPlayerStats() {
-        val playerName = "your_player_name_here" // Replace with the actual player name
+    private fun fetchPlayerStats(playerName : String) {
+
         firebaseRepository.getPlayer(playerName,
             onSuccess = { players ->
                 runOnUiThread {

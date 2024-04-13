@@ -44,7 +44,7 @@ class LoginActivity : AppCompatActivity() {
         login.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-//            signInWithGoogle()
+            signInWithGoogle()
         }
 
         val claude = findViewById<Button>(R.id.button3)
@@ -93,6 +93,7 @@ class LoginActivity : AppCompatActivity() {
             val account = task.getResult(ApiException::class.java)!!
             firebaseAuthWithGoogle(account.idToken!!) { success, userId ->
                 if (success) {
+                    // TODO: Make check so that if user already exists, they are taken to MainActivity
                     val intent = Intent(this, CreatePlayer::class.java)
                     startActivity(intent)
                     finish()

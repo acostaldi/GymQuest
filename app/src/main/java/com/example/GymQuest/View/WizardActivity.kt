@@ -3,30 +3,28 @@ package com.example.GymQuest.View
 import ApiKeys
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.chaquo.python.Python
 import com.chaquo.python.android.AndroidPlatform
 import com.example.GymQuest.R
 
-class ClaudeAPI : AppCompatActivity(){
-
+class WizardActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_chat)
+        enableEdgeToEdge()
+        setContentView(R.layout.wizard_activity)
 
         val chatArea = findViewById<TextView>(R.id.textView)
 
-        val aiPromptText = findViewById<EditText>(R.id.claudeQuery)
+        val aiPromptText = findViewById<TextView>(R.id.textView2)
 
-        findViewById<Button>(R.id.button2).setOnClickListener {
-            runQuery(aiPromptText.text.toString()) { response ->
-                runOnUiThread {
-                    chatArea.text = response
-                    Log.d("ClaudeAPI", response)
-                }
+        runQuery(aiPromptText.text.toString()) { response ->
+            runOnUiThread {
+                chatArea.text = response
+                Log.d("ClaudeAPI", response)
             }
         }
     }
@@ -42,8 +40,8 @@ class ClaudeAPI : AppCompatActivity(){
             val pythonScript = python.getModule("QueryAPI") // Replace with your script's name
 
             // Call a function from the script (replace "function_name" with your function's name)
-            val result = pythonScript.callAttr("query_API", ApiKeys.API_KEY, aiPrompt)
-            //val result = pythonScript.callAttr("query_story_API", ApiKeys.API_KEY)
+            //val result = pythonScript.callAttr("query_API", ApiKeys.API_KEY, aiPrompt)
+            val result = pythonScript.callAttr("query_story_API", ApiKeys.API_KEY)
             //val result = pythonScript.callAttr("query_fitness_API", ApiKeys.API_KEY)
 
             // Use the result (this assumes the function returns a string)
