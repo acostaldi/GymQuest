@@ -27,14 +27,6 @@ class MainActivity : AppCompatActivity() {
 
         firebaseRepository = FirebaseRepository()
 
-        val health = findViewById<EditText>(R.id.editHealth)
-
-        val strength = findViewById<EditText>(R.id.editStrength)
-
-        val dex = findViewById<EditText>(R.id.editDex)
-
-        val stamina = findViewById<EditText>(R.id.editStamina)
-
         recyclerView = findViewById(R.id.recyclerview)
         recyclerView.layoutManager = LinearLayoutManager(this)
         questAdapter = QuestAdapter(emptyList())
