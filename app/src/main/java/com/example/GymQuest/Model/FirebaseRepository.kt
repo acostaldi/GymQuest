@@ -1,13 +1,13 @@
 package com.example.GymQuest.Model
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+//import androidx.lifecycle.LiveData
+//import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.GoogleAuthProvider
+//import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ListenerRegistration
-import java.util.Random
+//import com.google.firebase.firestore.ListenerRegistration
+//import java.util.Random
 
 class FirebaseRepository {
 

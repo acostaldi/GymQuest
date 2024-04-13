@@ -1,5 +1,5 @@
 package com.example.GymQuest.Model
-import com.google.firebase.database.PropertyName
+//import com.google.firebase.database.PropertyName
 
 data class User(
 //    @get:PropertyName("strength") var strength: Int = 0,
