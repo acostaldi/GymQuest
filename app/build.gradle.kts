@@ -20,7 +20,7 @@ android {
                 install("requests")
             }
 
-            buildPython("C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\Python39_64python.exe")
+            buildPython("/usr/bin/python")
         }
     }
 
